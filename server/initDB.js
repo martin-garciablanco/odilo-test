@@ -4,6 +4,7 @@
 
 var mongoose = require('mongoose');
 var Club = mongoose.model('Club');
+var User = mongoose.model('User');
 
 module.exports.init = async function () {
     var nClubs = await Club.countDocuments();
@@ -11,6 +12,7 @@ module.exports.init = async function () {
     if (nClubs === 0) {
         createDefaultClubs();
     }
+    createDefaultUsers();
 }
 
 async function createDefaultClubs() {
@@ -21,4 +23,19 @@ async function createDefaultClubs() {
         await club.save();
     }
     console.log("Create default clubs");
+}
+
+async function createDefaultUsers() {
+    var defaultUser = new User();
+    defaultUser.displayName = "john-doe";
+    defaultUser.email = "john@doe@mail.com";
+    defaultUser.username = "john-doe";
+    defaultUser.password = "abc123."
+    defaultUser.favouriteClubs = []
+
+    const user = await User.findOne({ username: defaultUser.username })
+    if (!user) {
+        console.log("Create default clubs");
+        return defaultUser.save()
+    }
 }
