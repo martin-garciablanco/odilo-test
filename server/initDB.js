@@ -35,7 +35,7 @@ async function createDefaultUsers() {
 
     const user = await User.findOne({ username: defaultUser.username })
     if (!user) {
-        console.log("Create default clubs");
+        console.log("Create default user");
         return defaultUser.save()
     }
 }

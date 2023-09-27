@@ -13,7 +13,6 @@ module.exports = function (app) {
     app.route('/users/:username')
         .put((req, res) => {
             try {
-                console.log(req)
                 const { username } = req.params;
                 userController.updateUser(username, req.body)
                     .then(user => {

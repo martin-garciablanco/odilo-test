@@ -20,11 +20,9 @@ export class BookClubs {
 
     toggleFavourite(club: BookClub) {
         const index = this.user.favouriteClubs.indexOf(club.name)
-        console.log("index", index)
         index === -1
             ? this.user.favouriteClubs.push(club.name)
             : this.user.favouriteClubs.splice(index, 1)
-        console.log(this.user.favouriteClubs)
         this.accountService.update(this.user.username, this.user)
     }
 
