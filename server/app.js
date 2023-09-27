@@ -36,11 +36,11 @@ function initDB() {
 }
 
 function startServer(config) {
-    mongoose.connect(config.db, {useNewUrlParser: true, useUnifiedTopology: true}).then(function(db) {
+    mongoose.connect(config.db, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }).then(function (db) {
         mongoose.set('useCreateIndex', true);
         let app = initExpress(db);
         exports = module.exports = app;
-    
+
         app.listen(config.port, () => {
             console.log('Bookclub started using the "' + process.env.NODE_ENV + '" environment configuration on port ' + config.port + '!')
             initDB();
