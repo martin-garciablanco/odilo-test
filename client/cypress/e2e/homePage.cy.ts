@@ -7,6 +7,40 @@ describe('HomePage', () => {
 
     cy.contains("We value your creativity, surprise us!")
   })
+
+  it("should see book clubs", () => {
+    cy.visit('/')
+    cy.contains('Login')
+
+    login()
+
+    cy.get("[class=clubs-wrapper]")
+    cy.get("[class=clubs]")
+  })
+
+  it('set and unset a club from favourite', () => {
+    const favouriteButtonQuery = "[class=favourite-img]"
+    cy.visit('/')
+    cy.contains('Login')
+
+   login()
+
+   cy.get(favouriteButtonQuery)
+    .then($el => $el[0])
+    .should("have.attr", "src")
+    .should("include", "heart-empty.svg")
+
+    cy.get(favouriteButtonQuery).first().click()
+
+    cy.get(favouriteButtonQuery)
+    .then($el => $el[0])
+    .should("have.attr", "src")
+    .should("include", "heart-filled.svg")
+
+    cy.get(favouriteButtonQuery).first().click()
+
+
+  })
 })
 
 function login(){
