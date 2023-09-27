@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
-var	Schema = mongoose.Schema;
+var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
 	displayName: {
@@ -30,7 +30,11 @@ var UserSchema = new Schema({
 	},
 	lastAccess: {
 		type: Date
+	},
+	favouriteClubs: {
+		type: [String],
+		default: []
 	}
 });
 
-mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema);

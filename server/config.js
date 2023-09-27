@@ -5,14 +5,18 @@ var glob = require('glob');
 
 module.exports = _.extend(
 	require('./env/all'),
-	require('./env/' + process.env.NODE_ENV) || 'dev'
+	require('./env/' + getNodeEnv())
 );
+
+function getNodeEnv() {
+	return process.env.NODE_ENV === "prod" ? "prod" : "dev"
+}
 
 
 /**
  * Get files by glob patterns
  */
-module.exports.getGlobbedFiles = function(globPatterns, removeRoot) {
+module.exports.getGlobbedFiles = function (globPatterns, removeRoot) {
 	// For context switching
 	var _this = this;
 
@@ -24,24 +28,24 @@ module.exports.getGlobbedFiles = function(globPatterns, removeRoot) {
 
 	// If glob pattern is array so we use each pattern in a recursive way, otherwise we use glob
 	if (_.isArray(globPatterns)) {
-		globPatterns.forEach(function(globPattern) {
+		globPatterns.forEach(function (globPattern) {
 			output = _.union(output, _this.getGlobbedFiles(globPattern, removeRoot));
 		});
-	} 
+	}
 	else if (_.isString(globPatterns)) {
 
 		if (urlRegex.test(globPatterns)) {
 			output.push(globPatterns);
-		} 
+		}
 		else {
-            var files = glob(globPatterns, { sync: true });
-            if (removeRoot) {
-                files = files.map(function(file) {
-                    return file.replace(removeRoot, '');
-                });
-            }        
-            output = _.union(output, files);
-        }
+			var files = glob(globPatterns, { sync: true });
+			if (removeRoot) {
+				files = files.map(function (file) {
+					return file.replace(removeRoot, '');
+				});
+			}
+			output = _.union(output, files);
+		}
 	}
 
 	return output;
@@ -50,7 +54,7 @@ module.exports.getGlobbedFiles = function(globPatterns, removeRoot) {
 /**
  * Get the modules JavaScript files
  */
-module.exports.getJavaScriptAssets = function(includeTests) {
+module.exports.getJavaScriptAssets = function (includeTests) {
 	var output = this.getGlobbedFiles(this.assets.lib.js.concat(this.assets.js), 'public/');
 	// To include tests
 	if (includeTests) {
@@ -62,7 +66,7 @@ module.exports.getJavaScriptAssets = function(includeTests) {
 /**
  * Get the modules CSS files
  */
-module.exports.getCSSAssets = function() {
+module.exports.getCSSAssets = function () {
 	var output = this.getGlobbedFiles(this.assets.lib.css.concat(this.assets.css), 'public/');
 	return output;
 };
