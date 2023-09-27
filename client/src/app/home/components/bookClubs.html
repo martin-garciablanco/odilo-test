@@ -1,0 +1,7 @@
+﻿<div class="clubs-wrapper">
+  <div *ngFor="let club of bookClubs" class="club">
+  <img (click)="toggleFavourite(club)" src="{{getFavouriteSrc(club)}}" alt="favourite" class="favourite-img">
+    <img src={{club.image}} class="backdrop-img"/>
+    <p>{{club.name}}</p>
+  </div>
+</div>

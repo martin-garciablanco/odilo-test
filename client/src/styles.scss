@@ -6,7 +6,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-  
+
+body {
+  background-color: hsl(0, 0%, 7%);
+}
+
 h1,
 h2,
 h3,
@@ -45,7 +49,7 @@ p {
   display: flex;
   margin: 82px auto 32px;
   padding: 0 16px;
-  max-width: 960px;
+  max-width: 1400px;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
@@ -53,45 +57,6 @@ p {
   h1 {
       color: #16a596;
   }
-
-  .blockquote-wrapper {
-      display:inline-block;
-      font-family:sans-serif;
-      margin:3em;
-      max-width:24em;
-      .blockquote {
-        display:inline-block;
-        margin:0;
-        padding:1em;
-        position:relative;
-        &:before {
-          color:#f90;
-          content:"\201C";
-          font-size:4em;
-          left:0;
-          line-height:.75em;
-          position:absolute;
-          top:0;
-          transform:scale(2, 8);
-          transform-origin:top;
-        }
-        &:after {
-          color:#f90;
-          content:"\201D";
-          font-size:4em;
-          line-height:.75em;
-          position:absolute;
-          right:0;
-          top:0;
-          transform:scale(2, 8);
-          transform-origin:top;
-        }
-        > * {
-          padding:2em 2em;
-          color: #373a40;
-        }
-      }
-    }
 
   svg#clouds {
       position: fixed;
@@ -101,6 +66,3 @@ p {
       width: 1920px;
   }
 }
-
-
-

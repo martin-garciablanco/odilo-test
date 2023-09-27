@@ -1,0 +1,60 @@
+.clubs-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.club {
+  width: 200px;
+  padding: 8px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  text-align: center;
+  color: white;
+  margin-bottom: 4rem;
+  position: relative;
+  @media screen and (max-width: 960px) {
+    width: 150px;
+  }
+  .backdrop-img {
+    max-width: 200px;
+    width: 100%;
+  }
+  p {
+    margin-top: 6px;
+  }
+
+  &:hover {
+    box-shadow: 0 0 12px rgba(24, 229, 145, 0.6), inset 0 0 12px rgba(24, 229, 145, 0.6);
+    border: 2px solid rgba(24, 229, 145, 0.8);
+  }
+}
+
+.club + .club {
+  margin-left: 1rem;
+}
+
+.favourite-img {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  height: 35px;
+  transition: 0.15s all linear;
+
+  &:hover {
+    height: 39px;
+    top: 13px;
+    right: 13px;
+    cursor: pointer;
+  }
+
+  &:active {
+    top: 11px;
+    right: 11px;
+    height: 42px;
+  }
+}
+
+
