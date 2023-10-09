@@ -33,7 +33,7 @@
 
 ### Client
 
-- Actualizaría Angular hasta mínimo la versión v15.0.0 ya que es la primera que Node12 la actual LTS
+- Actualizaría Angular hasta mínimo la versión v15.0.0 ya que es la primera que Node12 la actual LTS puede ejecutar
 - Cambiaría Jest por Karma
   - Jest es de 2 a 3 veces más rápido ya que no utiliza un navegador, esto ahorra tiempo en local en en PipeLines
   - La comunidad de Jest es bastante más grande y su repositorio se actualiza más frecuentemente
