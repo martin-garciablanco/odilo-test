@@ -15,7 +15,7 @@ describe('HomePage', () => {
     login()
 
     cy.get("[class=clubs-wrapper]")
-    cy.get("[class=clubs]")
+    cy.get("[class=club]")
   })
 
   it('set and unset a club from favourite', () => {
